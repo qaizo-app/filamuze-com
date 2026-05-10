@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<title>Filamuze — учёт филамента для 3D-печати на твоём телефоне</title>
+<meta name="description" content="Сфотографируй этикетку — AI заполнит карточку. Нативное iOS + Android. Привязка NFC-меток. Один платёж, без подписок. EN / RU / HE." />
+<meta name="theme-color" content="#0f0f17" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Filamuze — учёт филамента для 3D-печати" />
+<meta property="og:description" content="Сфотографируй этикетку, AI заполнит карточку. Нативное iOS + Android. NFC-метки. Один платёж, без подписок." />
+<meta property="og:url" content="https://filamuze.com/index.ru.html" />
+<meta property="og:site_name" content="Filamuze" />
+<link rel="canonical" href="https://filamuze.com/index.ru.html" />
+<link rel="alternate" hreflang="en" href="https://filamuze.com/" />
+<link rel="alternate" hreflang="ru" href="https://filamuze.com/index.ru.html" />
+<link rel="alternate" hreflang="he" href="https://filamuze.com/index.he.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-deep: #0f0f17;
+    --bg: #17171c;
+    --bg2: #1d1d24;
+    --card: #23232c;
+    --border: #2f2e3a;
+    --divider: #252530;
+
+    --text: #f5f5f5;
+    --dim: #a1a1aa;
+    --muted: #737373;
+
+    --accent: #a78bfa;
+    --accent-deep: #7c3aed;
+    --accent-soft: rgba(167,139,250,0.14);
+    --accent-border: rgba(167,139,250,0.4);
+
+    --light-bg: #faf8ff;
+    --light-card: #ffffff;
+    --light-text: #1a1a24;
+    --light-dim: #52525b;
+    --light-muted: #71717a;
+    --light-border: #ede9fe;
+
+    --green: #34d399;
+    --warning: #fbbf24;
+    --problem: #fb7185;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg-deep); color: var(--text); }
+  body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(15,15,23,0.78);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .top-inner {
+    max-width: 1180px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 800; font-size: 18px; letter-spacing: -0.3px; color: var(--text);
+  }
+  .brand-mark {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 20px rgba(167,139,250,0.35);
+  }
+  .brand-mark svg { width: 18px; height: 18px; color: white; }
+
+  .lang { display: flex; align-items: center; gap: 4px; font-size: 13px; }
+  .lang a {
+    color: var(--dim); padding: 6px 10px; border-radius: 8px;
+    transition: background .15s, color .15s;
+  }
+  .lang a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+  .lang a.active { color: var(--accent); background: var(--accent-soft); }
+
+  section { padding: 96px 24px; position: relative; }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  .center { text-align: center; }
+  h1 {
+    font-size: clamp(36px, 6.5vw, 64px); line-height: 1.05;
+    letter-spacing: -1.5px; margin: 0 0 22px; font-weight: 800;
+  }
+  h2 {
+    font-size: clamp(28px, 4vw, 44px); line-height: 1.1;
+    letter-spacing: -1px; margin: 0 0 18px; font-weight: 800;
+  }
+  h3 { font-size: 18px; margin: 0 0 8px; font-weight: 700; letter-spacing: -0.2px; }
+  .lede {
+    font-size: clamp(17px, 2vw, 21px); color: var(--dim);
+    max-width: 640px; margin: 0 auto 36px; line-height: 1.5;
+  }
+  .lede.left { margin-left: 0; margin-right: 0; }
+  .eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 700;
+    letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 14px;
+  }
+
+  .hero {
+    padding-top: 96px; padding-bottom: 0; overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 50% at 30% 0%, rgba(167,139,250,0.18), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 90% 30%, rgba(124,58,237,0.12), transparent 70%),
+      var(--bg-deep);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+    .hero .lede.left { margin-left: auto; margin-right: auto; }
+  }
+  .hero h1 .grad {
+    background: linear-gradient(135deg, var(--accent), #c4b5fd, #ddd6fe);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .stores { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  @media (max-width: 880px) { .stores { justify-content: center; } }
+  .store-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 22px; border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .store-btn:hover {
+    border-color: var(--accent-border); transform: translateY(-2px);
+    background: rgba(255,255,255,0.08);
+  }
+  .store-btn .small { color: var(--dim); font-size: 11px; line-height: 1; display: block; }
+  .store-btn .big { font-size: 16px; font-weight: 700; line-height: 1.2; }
+  .store-btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; pointer-events: none; }
+  .badge-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; align-items: center; }
+  @media (max-width: 880px) { .badge-row { justify-content: center; } }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--dim); font-size: 13px; font-weight: 500;
+  }
+  .badge svg { width: 14px; height: 14px; color: var(--accent); }
+
+  .device {
+    position: relative; width: 100%; max-width: 320px; margin: 0 auto;
+    aspect-ratio: 1080 / 2109; border-radius: 32px;
+    background: linear-gradient(160deg, #20202a, #0f0f17); padding: 4px;
+    box-shadow:
+      0 50px 120px -20px rgba(167,139,250,0.35),
+      0 30px 60px -15px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .device-screen {
+    width: 100%; height: 100%; border-radius: 28px;
+    overflow: hidden; background: var(--bg); position: relative;
+  }
+  .device-screen img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: contain; object-position: top center;
+    z-index: 1; background: var(--bg);
+  }
+  .device-fallback {
+    position: absolute; inset: 0; z-index: 0;
+    padding: 24px 16px; display: flex; flex-direction: column; gap: 10px;
+    background: var(--bg);
+  }
+  .device-fallback .row {
+    display: flex; align-items: center; gap: 10px; padding: 12px;
+    background: var(--card); border: 1px solid var(--divider);
+    border-radius: 14px; border-left-width: 4px;
+  }
+  .device-fallback .row .ttl { flex: 1; font-size: 13px; font-weight: 700; }
+  .device-fallback .row .sub { flex: 1; font-size: 11px; color: var(--dim); font-family: 'JetBrains Mono', monospace; }
+  .device-fallback .row .pct { font-size: 14px; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+
+  .features { background: var(--light-bg); color: var(--light-text); border-top: 1px solid rgba(0,0,0,0.04); }
+  .features .eyebrow { color: var(--accent-deep); }
+  .features h2 { color: var(--light-text); }
+  .features .lede { color: var(--light-dim); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 56px; }
+  .feature {
+    background: var(--light-card); border: 1px solid var(--light-border);
+    border-radius: 18px; padding: 28px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .feature:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -10px rgba(124,58,237,0.18);
+    border-color: rgba(124,58,237,0.3);
+  }
+  .feature .icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-soft), rgba(124,58,237,0.05));
+    border: 1px solid var(--light-border);
+    color: var(--accent-deep); margin-bottom: 18px;
+  }
+  .feature .icon svg { width: 22px; height: 22px; stroke-width: 1.75; }
+  .feature h3 { color: var(--light-text); }
+  .feature p { color: var(--light-dim); margin: 0; font-size: 14.5px; line-height: 1.55; }
+
+  .showcase { background: var(--bg-deep); overflow: hidden; }
+  .showcase-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+    align-items: center; padding: 48px 0;
+  }
+  .showcase-row + .showcase-row { border-top: 1px solid var(--border); }
+  .showcase-row.flip .showcase-text { order: 2; }
+  @media (max-width: 880px) {
+    .showcase-row { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .showcase-row.flip .showcase-text { order: 0; }
+  }
+  .showcase h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 14px; }
+  .showcase p { color: var(--dim); font-size: 16px; line-height: 1.6; max-width: 480px; }
+  .showcase-row .device { max-width: 280px; }
+
+  .pricing { background: var(--light-bg); color: var(--light-text); }
+  .pricing .eyebrow { color: var(--accent-deep); }
+  .pricing h2 { color: var(--light-text); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 880px; margin: 56px auto 0; }
+  @media (max-width: 720px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .price-card {
+    background: var(--light-card); border: 2px solid var(--light-border);
+    border-radius: 20px; padding: 36px;
+  }
+  .price-card.highlight {
+    border-color: var(--accent);
+    box-shadow: 0 25px 60px -20px rgba(167,139,250,0.45);
+    position: relative;
+  }
+  .price-card.highlight::before {
+    content: "Filamuze"; position: absolute; top: -14px; left: 36px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 20px;
+  }
+  .price-card h3 {
+    font-size: 14px; color: var(--light-muted); text-transform: uppercase;
+    letter-spacing: 0.6px; margin-bottom: 6px; font-weight: 600;
+  }
+  .price-card .amount {
+    font-size: 36px; font-weight: 800; line-height: 1.1;
+    letter-spacing: -1px; color: var(--light-text); margin-bottom: 4px;
+  }
+  .price-card.highlight .amount { color: var(--accent-deep); }
+  .price-card .sub { font-size: 13px; color: var(--light-muted); margin-bottom: 20px; }
+  .check, .x {
+    display: flex; align-items: flex-start; gap: 10px;
+    color: var(--light-dim); font-size: 14px; line-height: 1.5; margin: 8px 0;
+  }
+  .check svg { color: var(--green); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
+  .x svg { color: #fb7185; flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
+
+  footer {
+    padding: 56px 24px 40px; background: var(--bg-deep);
+    border-top: 1px solid var(--border); color: var(--muted); font-size: 13px;
+  }
+  .foot-grid {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 18px;
+  }
+  .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot-links a { color: var(--dim); transition: color .15s; }
+  .foot-links a:hover { color: var(--accent); }
+  .foot-brand { display: flex; align-items: center; gap: 10px; }
+  .foot-brand .brand-mark { width: 24px; height: 24px; border-radius: 7px; box-shadow: none; }
+  .foot-brand .brand-mark svg { width: 14px; height: 14px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/" aria-label="Filamuze">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 7l9 4 9-4-9-4z"/>
+          <path d="M3 12l9 4 9-4"/>
+          <path d="M3 17l9 4 9-4"/>
+        </svg>
+      </span>
+      Filamuze
+    </a>
+    <nav class="lang" aria-label="Язык">
+      <a href="./">EN</a>
+      <a href="./index.ru.html" class="active">RU</a>
+      <a href="./index.he.html">HE</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Учёт филамента для 3D-печати</p>
+      <h1>Сфотографируй этикетку.<br/><span class="grad">Filamuze заполнит карточку.</span></h1>
+      <p class="lede left">
+        Нативное iOS и Android приложение. Привязка NFC-меток. Один платёж — без подписок.
+        Учитывай каждую катушку по весу, узнавай что заканчивается до следующей печати,
+        храни данные на своём телефоне.
+      </p>
+      <div class="stores">
+        <a class="store-btn" aria-disabled="true" href="#">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.05 2.49-4.51 2.6-4.59-1.42-2.07-3.62-2.36-4.4-2.39-1.87-.19-3.65 1.1-4.6 1.1-.95 0-2.41-1.07-3.97-1.05-2.04.03-3.93 1.19-4.99 3.01-2.13 3.7-.55 9.18 1.53 12.18 1.02 1.47 2.23 3.13 3.83 3.07 1.54-.06 2.12-1 3.99-1 1.86 0 2.4 1 4.02.97 1.66-.03 2.71-1.5 3.72-2.99.65-.94 1.45-2.32 1.93-3.74-.04-.02-3.71-1.42-3.66-5.57zM14.05 3.85c.85-1.04 1.42-2.48 1.27-3.92-1.22.05-2.71.83-3.59 1.86-.79.91-1.48 2.39-1.3 3.79 1.36.11 2.75-.69 3.62-1.73z"/></svg>
+          <span><span class="small">Скоро в</span><span class="big">App Store</span></span>
+        </a>
+        <a class="store-btn" aria-disabled="true" href="#">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333zM15.864 8.43l2.882 1.668c.726.42.726 1.464 0 1.884l-2.882 1.668L13.291 11zM5.864 1.617l10.937 6.333-2.302 2.302z"/></svg>
+          <span><span class="small">Скоро в</span><span class="big">Google Play</span></span>
+        </a>
+      </div>
+      <div class="badge-row">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Один платёж</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Работает офлайн</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>EN · RU · HE</span>
+      </div>
+    </div>
+    <div class="device" aria-label="Главный экран Filamuze">
+      <div class="device-screen">
+        <img src="./screenshots/07-spool-list.jpg" alt="Главный экран Filamuze — список катушек филамента с прогресс-барами" onerror="this.style.display='none'" />
+        <div class="device-fallback">
+          <div class="row" style="border-left-color:#67d4ff;"><div style="flex:1;"><div class="ttl">Sunlu PETG</div><div class="sub">Sky Blue · 1000/1000г</div></div><div class="pct">100%</div></div>
+          <div class="row" style="border-left-color:#fbbf24;"><div style="flex:1;"><div class="ttl">Sunlu PETG</div><div class="sub">Yellow · 1000/1000г</div></div><div class="pct">100%</div></div>
+          <div class="row" style="border-left-color:#fb7185;"><div style="flex:1;"><div class="ttl">Sunlu PETG</div><div class="sub">Red · 1000/1000г</div></div><div class="pct">100%</div></div>
+          <div class="row" style="border-left-color:#34d399;"><div style="flex:1;"><div class="ttl">Ataraxia Art</div><div class="sub">PETG Green · 1000/1000г</div></div><div class="pct">100%</div></div>
+          <div class="row" style="border-left-color:#a78bfa;"><div style="flex:1;"><div class="ttl">Lumizone PLA</div><div class="sub">Green · 1000/1000г</div></div><div class="pct">100%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 96px;"></div>
+</section>
+
+<section class="features">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Что умеет</p>
+      <h2>Сделано для тех, кто реально взвешивает катушки.</h2>
+      <p class="lede">Без социальной ленты. Без всплывающих окон с подпиской. Только то, что ты будешь открывать каждый день.</p>
+    </div>
+    <div class="features-grid">
+
+      <article class="feature">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+        <h3>AI-сканер этикеток</h3>
+        <p>Наведи камеру на наклейку катушки. Бренд, материал, цвет, температуры — всё заполнится само.</p>
+      </article>
+
+      <article class="feature">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 21h14"/><path d="m18 9-6 6-6-6"/><path d="M6 3h12"/></svg>
+        </span>
+        <h3>Брутто или нетто</h3>
+        <p>Введи показание кухонных весов как есть. Вес пустой катушки вычитается автоматически.</p>
+      </article>
+
+      <article class="feature">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/><path d="M7.76 16.24a6 6 0 0 1 0-8.49"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49"/><circle cx="12" cy="12" r="2"/></svg>
+        </span>
+        <h3>Привязка NFC-меток</h3>
+        <p>Наклей NFC-метку за ¢10 на катушку. Тапни её откуда угодно — Filamuze открывается на нужной катушке.</p>
+      </article>
+
+      <article class="feature">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        </span>
+        <h3>Напоминание "заканчивается"</h3>
+        <p>Локальное уведомление когда катушка падает ниже 100 г. Утром следующего дня в 10:00, а не посреди печати.</p>
+      </article>
+
+      <article class="feature">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </span>
+        <h3>Импорт из Spoolman</h3>
+        <p>Уже работаешь со Spoolman? Перетащи JSON-экспорт — весь каталог переедет одним тапом.</p>
+      </article>
+
+      <article class="feature">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </span>
+        <h3>English · Русский · עברית</h3>
+        <p>Реальные переводы, RTL-вёрстка для иврита, авто-определение языка устройства при первом запуске.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="showcase">
+  <div class="wrap">
+    <div class="showcase-row">
+      <div class="showcase-text">
+        <p class="eyebrow">Один взгляд, не таблица</p>
+        <h2>Каждая катушка — со своим цветом и весом.</h2>
+        <p>Главный экран фильтрует по материалу одним тапом, и итоги вверху пересчитываются под то, что реально перед тобой. Каждая катушка носит свой цвет филамента — никакой "фиолетовой униформы".</p>
+      </div>
+      <div class="device">
+        <div class="device-screen">
+          <img src="./screenshots/05-spool-list-grid.jpg" alt="Список катушек, grid view" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-row flip">
+      <div class="showcase-text">
+        <p class="eyebrow">Сушка, которая не врёт</p>
+        <h2>Запечатан, высушен, последний раз использован — на одном экране.</h2>
+        <p>Каждая катушка хранит когда вскрыли пакет, когда последний раз прогнали через драйер, и где она лежит сейчас. Гигроскопичные материалы больше не подкидывают сюрпризов.</p>
+      </div>
+      <div class="device">
+        <div class="device-screen">
+          <img src="./screenshots/08-spool-detail-photo.jpg" alt="Детали катушки с фото и весом" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-row">
+      <div class="showcase-text">
+        <p class="eyebrow">Тап. Открыто. Готово.</p>
+        <h2>NFC-привязка — железная фишка, которой нет ни у кого.</h2>
+        <p>Наклей метку на катушку. Тапни её каждый раз когда тянешься за бобиной. Filamuze открывается прямо на странице этой катушки, готовый записать печать. PWA-трекеры так не умеют — у них нет доступа к NFC.</p>
+      </div>
+      <div class="device">
+        <div class="device-screen">
+          <img src="./screenshots/04-nfc-pair.jpg" alt="NFC pair flow" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Цена</p>
+      <h2>Один раз заплатил — пользуешься.</h2>
+      <p class="lede">
+        Во время Closed Test все функции бесплатны. После релиза — единоразовый платёж за power-функции.
+        Без ежемесячных счетов навсегда.
+      </p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card highlight">
+        <h3>Filamuze</h3>
+        <div class="amount">Пока бесплатно</div>
+        <div class="sub">Единоразовый платёж после релиза · ориентировочно ~$15-20</div>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Все текущие функции включены</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Нативное iOS + Android, реальная производительность</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Привязка NFC-меток</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Данные на твоём телефоне, синхронизация по желанию</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Без рекламы, аналитики и допродаж</p>
+      </div>
+      <div class="price-card">
+        <h3>Подписочные приложения у других</h3>
+        <div class="amount" style="color:var(--light-muted);">$1.99 / месяц</div>
+        <div class="sub">Бесконечно. За инструмент, которым ты будешь пользоваться годами.</div>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Счета накапливаются с годами</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Отключаешь подписку — теряешь доступ</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Только в браузере, нет NFC, нет нативного приложения</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Данные лежат на чужом сервере</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 7l9 4 9-4-9-4z"/>
+          <path d="M3 12l9 4 9-4"/>
+          <path d="M3 17l9 4 9-4"/>
+        </svg>
+      </span>
+      <span>Filamuze · Сделано в Qaizo Studio · <a href="mailto:support@filamuze.com">support@filamuze.com</a></span>
+    </div>
+    <nav class="foot-links">
+      <a href="./privacy.ru.html">Конфиденциальность</a>
+      <a href="./terms.ru.html">Условия</a>
+      <a href="./">EN</a>
+      <a href="./index.he.html">HE</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
