@@ -316,8 +316,12 @@
     letter-spacing: 0.8px;
   }
   .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
-  .compare-table .yes svg, .compare-table .no svg, .compare-table .partial svg {
+  .compare-table .yes svg,
+  .compare-table .yes-us svg,
+  .compare-table .no svg,
+  .compare-table .partial svg {
     width: 18px; height: 18px; stroke-width: 2.5;
+    display: inline-block; vertical-align: middle;
   }
   .compare-table .yes { color: var(--green); }
   .compare-table .yes-us { color: var(--accent); }
