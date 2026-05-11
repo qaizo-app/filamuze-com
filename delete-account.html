@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<title>Delete your Filamuze account</title>
+<meta name="description" content="How to delete your Filamuze account and the data associated with it." />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --card: #161616;
+    --border: #262626;
+    --text: #f5f5f5;
+    --dim: #a1a1aa;
+    --muted: #737373;
+    --accent: #a78bfa;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 32px 20px 80px;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 32px; }
+  .brand { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  h1 { font-size: 32px; margin: 8px 0 6px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; color: var(--text); }
+  p, li { color: var(--dim); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .lang-switch { font-size: 12px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+  .lang-switch a { color: var(--dim); margin: 0 6px; }
+  .lang-switch a.active { color: var(--accent); font-weight: 700; }
+  .lang-switch a:first-child { margin-left: 0; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 18px 0;
+  }
+  .card h2 { margin-top: 0; }
+  code {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="lang-switch">
+    <a href="./delete-account.html" class="active">EN</a> ·
+    <a href="./delete-account.ru.html">RU</a> ·
+    <a href="./delete-account.he.html">HE</a>
+  </div>
+  <header>
+    <div class="brand">Filamuze</div>
+    <h1>Delete your account</h1>
+    <p class="meta">Last updated: 11 May 2026</p>
+  </header>
+
+  <p>
+    You can permanently delete your Filamuze account and all data
+    associated with it at any time. There are two paths — the in-app
+    one is instant, the email one is a fallback in case you no longer
+    have the app installed.
+  </p>
+
+  <div class="card">
+    <h2>Option 1 — From inside the app (recommended)</h2>
+    <ol>
+      <li>Open <strong>Filamuze</strong>.</li>
+      <li>Sign in if you're signed out.</li>
+      <li>Tap <strong>Settings</strong> (gear icon in the bottom tab bar).</li>
+      <li>Expand the <strong>Account</strong> section.</li>
+      <li>Tap <strong>Delete account</strong>.</li>
+      <li>Confirm the deletion.</li>
+    </ol>
+    <p>
+      The account is deleted immediately. You'll be signed out and the
+      app returns to the welcome screen.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Option 2 — By email</h2>
+    <p>
+      If you no longer have the app or can't sign in, send a request to:
+    </p>
+    <p style="font-size: 18px; font-weight: 700;">
+      <a href="mailto:support@filamuze.com?subject=Account%20deletion%20request">support@filamuze.com</a>
+    </p>
+    <p>
+      Include the email address you registered with. We will verify
+      your identity (a reply from the registered email is usually
+      enough) and complete the deletion within <strong>7 days</strong>.
+    </p>
+  </div>
+
+  <h2>What gets deleted</h2>
+  <p>When your account is deleted, we permanently remove:</p>
+  <ul>
+    <li>Your account record (email, sign-in provider, user ID).</li>
+    <li>All your filament spool profiles (brand, material, weight,
+      color, photos, temperatures, prices, notes).</li>
+    <li>All your usage logs (print history, weight changes).</li>
+    <li>All your NFC tag pairings.</li>
+    <li>All photos you uploaded to Firebase Storage.</li>
+    <li>Any custom brands and materials you added.</li>
+  </ul>
+
+  <h2>What we keep</h2>
+  <p>
+    We do not keep a copy of your spool data after deletion. The only
+    things that may remain briefly:
+  </p>
+  <ul>
+    <li>
+      Anonymized crash reports already sent to Sentry (the user ID
+      attached to them is your Firebase UID, which itself no longer
+      maps to anyone after deletion). These rotate out automatically
+      within 90 days.
+    </li>
+    <li>
+      Server-side logs from Cloud Firestore / Storage (Google's
+      retention, typically 30 days). These contain no spool content,
+      just access timestamps.
+    </li>
+  </ul>
+
+  <h2>Questions?</h2>
+  <p>
+    Reach us at <a href="mailto:support@filamuze.com">support@filamuze.com</a>
+    — we read every message.
+  </p>
+
+  <footer>
+    Filamuze · Made by Qaizo Studio · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a>
+  </footer>
+</main>
+</body>
+</html>
