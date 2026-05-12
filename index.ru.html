@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="robots" content="index,follow" />
-<title>Filamuze — учёт филамента для 3D-печати на твоём телефоне</title>
-<meta name="description" content="Сфотографируй этикетку — AI заполнит карточку. Нативное iOS + Android. Привязка NFC-меток. Один платёж, без подписок. EN / RU / HE." />
+<title>Filamuze — учёт филамента для 3D-печати · Нативное iOS и Android · NFC-метки · Один платёж</title>
+<meta name="description" content="Сфотографируй этикетку — AI заполнит карточку. Нативное iOS и Android, а не PWA. Привязка NFC-меток. Один платёж, без подписок. Многоязычное EN / RU / HE." />
 <meta name="theme-color" content="#0f0f17" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Filamuze — учёт филамента для 3D-печати" />
-<meta property="og:description" content="Сфотографируй этикетку, AI заполнит карточку. Нативное iOS + Android. NFC-метки. Один платёж, без подписок." />
+<meta property="og:description" content="Нативное iOS и Android. Привязка NFC-меток. Один платёж, без подписок. EN / RU / HE." />
 <meta property="og:url" content="https://filamuze.com/index.ru.html" />
 <meta property="og:site_name" content="Filamuze" />
 <link rel="canonical" href="https://filamuze.com/index.ru.html" />
@@ -28,12 +28,14 @@
     --bg: #17171c;
     --bg2: #1d1d24;
     --card: #23232c;
+    --card2: #2a2a35;
     --border: #2f2e3a;
     --divider: #252530;
 
     --text: #f5f5f5;
     --dim: #a1a1aa;
     --muted: #737373;
+    --hairline: rgba(255,255,255,0.06);
 
     --accent: #a78bfa;
     --accent-deep: #7c3aed;
@@ -65,37 +67,64 @@
   a:hover { text-decoration: none; }
   img { max-width: 100%; display: block; }
 
+  /* ─── Top bar ─────────────────────────────────────────────────── */
   .top {
-    position: sticky; top: 0; z-index: 50;
+    position: sticky;
+    top: 0;
+    z-index: 50;
     background: rgba(15,15,23,0.78);
     backdrop-filter: blur(14px) saturate(180%);
     -webkit-backdrop-filter: blur(14px) saturate(180%);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--hairline);
   }
   .top-inner {
-    max-width: 1180px; margin: 0 auto; padding: 14px 24px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
   .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-weight: 800; font-size: 18px; letter-spacing: -0.3px; color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.3px;
+    color: var(--text);
   }
   .brand-mark {
-    width: 32px; height: 32px; border-radius: 9px;
+    width: 32px; height: 32px;
+    border-radius: 9px;
     background: linear-gradient(135deg, var(--accent), var(--accent-deep));
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 8px 20px rgba(167,139,250,0.35);
   }
   .brand-mark svg { width: 18px; height: 18px; color: white; }
 
+  .top-nav {
+    display: flex; gap: 6px; font-size: 14px;
+  }
+  .top-nav a {
+    color: var(--dim);
+    padding: 8px 12px; border-radius: 8px;
+    transition: background .15s, color .15s;
+  }
+  .top-nav a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+  @media (max-width: 720px) { .top-nav { display: none; } }
+
   .lang { display: flex; align-items: center; gap: 4px; font-size: 13px; }
   .lang a {
-    color: var(--dim); padding: 6px 10px; border-radius: 8px;
+    color: var(--dim);
+    padding: 6px 10px; border-radius: 8px;
     transition: background .15s, color .15s;
   }
   .lang a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
   .lang a.active { color: var(--accent); background: var(--accent-soft); }
 
+  /* ─── Section shells ──────────────────────────────────────────── */
   section { padding: 96px 24px; position: relative; }
   .wrap { max-width: 1180px; margin: 0 auto; }
   .center { text-align: center; }
@@ -118,6 +147,7 @@
     letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 14px;
   }
 
+  /* ─── Hero ────────────────────────────────────────────────────── */
   .hero {
     padding-top: 96px; padding-bottom: 0; overflow: hidden;
     background:
@@ -125,7 +155,12 @@
       radial-gradient(ellipse 60% 40% at 90% 30%, rgba(124,58,237,0.12), transparent 70%),
       var(--bg-deep);
   }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
   @media (max-width: 880px) {
     .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
     .hero .lede.left { margin-left: auto; margin-right: auto; }
@@ -135,7 +170,9 @@
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
   }
-  .stores { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .stores {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px;
+  }
   @media (max-width: 880px) { .stores { justify-content: center; } }
   .store-btn {
     display: inline-flex; align-items: center; gap: 12px;
@@ -161,6 +198,7 @@
   }
   .badge svg { width: 14px; height: 14px; color: var(--accent); }
 
+  /* ─── Phone frame ─────────────────────────────────────────────── */
   .device {
     position: relative; width: 100%; max-width: 320px; margin: 0 auto;
     aspect-ratio: 1080 / 2109; border-radius: 32px;
@@ -180,29 +218,28 @@
     object-fit: contain; object-position: top center;
     z-index: 1; background: var(--bg);
   }
-  .device-fallback {
-    position: absolute; inset: 0; z-index: 0;
-    padding: 24px 16px; display: flex; flex-direction: column; gap: 10px;
-    background: var(--bg);
-  }
-  .device-fallback .row {
-    display: flex; align-items: center; gap: 10px; padding: 12px;
-    background: var(--card); border: 1px solid var(--divider);
-    border-radius: 14px; border-left-width: 4px;
-  }
-  .device-fallback .row .ttl { flex: 1; font-size: 13px; font-weight: 700; }
-  .device-fallback .row .sub { flex: 1; font-size: 11px; color: var(--dim); font-family: 'JetBrains Mono', monospace; }
-  .device-fallback .row .pct { font-size: 14px; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
 
-  .features { background: var(--light-bg); color: var(--light-text); border-top: 1px solid rgba(0,0,0,0.04); }
+  /* ─── Features (light) ─────────────────────────────────────────── */
+  .features {
+    background: var(--light-bg); color: var(--light-text);
+    border-top: 1px solid rgba(0,0,0,0.04);
+  }
   .features .eyebrow { color: var(--accent-deep); }
   .features h2 { color: var(--light-text); }
   .features .lede { color: var(--light-dim); }
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 56px; }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 56px;
+  }
+  @media (max-width: 880px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
   .feature {
     background: var(--light-card); border: 1px solid var(--light-border);
-    border-radius: 18px; padding: 28px;
+    border-radius: 18px; padding: 26px;
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    position: relative;
   }
   .feature:hover {
     transform: translateY(-3px);
@@ -211,19 +248,92 @@
   }
   .feature .icon {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 46px; height: 46px; border-radius: 12px;
+    width: 42px; height: 42px; border-radius: 11px;
     background: linear-gradient(135deg, var(--accent-soft), rgba(124,58,237,0.05));
     border: 1px solid var(--light-border);
-    color: var(--accent-deep); margin-bottom: 18px;
+    color: var(--accent-deep); margin-bottom: 16px;
   }
   .feature .icon svg { width: 22px; height: 22px; stroke-width: 1.75; }
-  .feature h3 { color: var(--light-text); }
+  .feature .tag {
+    position: absolute; top: 14px; right: 14px;
+    background: rgba(167,139,250,0.12);
+    color: var(--accent-deep);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 4px 8px; border-radius: 999px;
+    border: 1px solid rgba(124,58,237,0.2);
+  }
+  .feature h3 { color: var(--light-text); padding-right: 60px; }
   .feature p { color: var(--light-dim); margin: 0; font-size: 14.5px; line-height: 1.55; }
 
+  /* ─── Why Filamuze (dark) ─────────────────────────────────────── */
+  .why {
+    background: var(--bg-deep);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .why-claim {
+    background: var(--bg2);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 32px auto 56px;
+    max-width: 820px;
+    color: var(--dim);
+    font-size: 15px;
+    line-height: 1.65;
+    text-align: left;
+  }
+  .why-claim strong { color: var(--text); font-weight: 700; }
+  .compare-table {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .compare-table table {
+    width: 100%; border-collapse: collapse; min-width: 720px;
+    font-size: 14px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 14px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .compare-table th:first-child, .compare-table td:first-child {
+    text-align: left; color: var(--text);
+  }
+  .compare-table thead th {
+    color: var(--dim); font-weight: 600;
+    background: var(--card);
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table thead th.us {
+    color: var(--accent); font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+  .compare-table .yes svg,
+  .compare-table .yes-us svg,
+  .compare-table .no svg,
+  .compare-table .partial svg {
+    width: 18px; height: 18px; stroke-width: 2.5;
+    display: inline-block; vertical-align: middle;
+  }
+  .compare-table .yes { color: var(--green); }
+  .compare-table .yes-us { color: var(--accent); }
+  .compare-table .no { color: var(--problem); }
+  .compare-table .partial { color: var(--warning); font-size: 12px; font-weight: 600; }
+  .compare-table tbody tr td:nth-child(2) { background: rgba(167,139,250,0.04); }
+
+  /* ─── Showcase rows (dark) ─────────────────────────────────────── */
   .showcase { background: var(--bg-deep); overflow: hidden; }
   .showcase-row {
     display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-    align-items: center; padding: 48px 0;
+    align-items: center; padding: 56px 0;
   }
   .showcase-row + .showcase-row { border-top: 1px solid var(--border); }
   .showcase-row.flip .showcase-text { order: 2; }
@@ -235,55 +345,102 @@
   .showcase p { color: var(--dim); font-size: 16px; line-height: 1.6; max-width: 480px; }
   .showcase-row .device { max-width: 280px; }
 
+  /* ─── Pricing (light) ───────────────────────────────────────────── */
   .pricing { background: var(--light-bg); color: var(--light-text); }
   .pricing .eyebrow { color: var(--accent-deep); }
   .pricing h2 { color: var(--light-text); }
-  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 880px; margin: 56px auto 0; }
-  @media (max-width: 720px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .pricing .lede { color: var(--light-dim); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 1080px;
+    margin: 56px auto 0;
+  }
+  @media (max-width: 880px) { .pricing-grid { grid-template-columns: 1fr; } }
   .price-card {
     background: var(--light-card); border: 2px solid var(--light-border);
-    border-radius: 20px; padding: 36px;
+    border-radius: 20px; padding: 32px;
+    position: relative;
+    display: flex; flex-direction: column;
   }
   .price-card.highlight {
     border-color: var(--accent);
     box-shadow: 0 25px 60px -20px rgba(167,139,250,0.45);
-    position: relative;
+    transform: scale(1.02);
   }
   .price-card.highlight::before {
-    content: "Filamuze"; position: absolute; top: -14px; left: 36px;
+    content: "Лучший выбор";
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
     background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-    color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
-    text-transform: uppercase; padding: 6px 12px; border-radius: 20px;
+    color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 999px;
+    white-space: nowrap;
   }
-  .price-card h3 {
-    font-size: 14px; color: var(--light-muted); text-transform: uppercase;
-    letter-spacing: 0.6px; margin-bottom: 6px; font-weight: 600;
+  .price-card .label {
+    font-size: 13px; color: var(--light-muted); text-transform: uppercase;
+    letter-spacing: 0.7px; margin-bottom: 8px; font-weight: 700;
   }
   .price-card .amount {
     font-size: 36px; font-weight: 800; line-height: 1.1;
     letter-spacing: -1px; color: var(--light-text); margin-bottom: 4px;
   }
   .price-card.highlight .amount { color: var(--accent-deep); }
-  .price-card .sub { font-size: 13px; color: var(--light-muted); margin-bottom: 20px; }
+  .price-card .amount .small {
+    font-size: 14px; color: var(--light-muted); font-weight: 600;
+    margin-left: 4px;
+  }
+  .price-card .sub { font-size: 13px; color: var(--light-muted); margin-bottom: 20px; min-height: 36px; }
   .check, .x {
     display: flex; align-items: flex-start; gap: 10px;
-    color: var(--light-dim); font-size: 14px; line-height: 1.5; margin: 8px 0;
+    color: var(--light-dim); font-size: 14px; line-height: 1.5; margin: 7px 0;
   }
-  .check svg { color: var(--green); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
-  .x svg { color: #fb7185; flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
+  .check svg { color: var(--green); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; stroke-width: 3; }
+  .x svg { color: #fb7185; flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; stroke-width: 3; }
 
+  /* ─── Big CTA (dark) ────────────────────────────────────────────── */
+  .cta {
+    background: var(--bg-deep);
+    text-align: center;
+    padding: 96px 24px;
+    background:
+      radial-gradient(ellipse 50% 50% at 50% 100%, rgba(167,139,250,0.15), transparent 70%),
+      var(--bg-deep);
+  }
+  .cta h2 {
+    font-size: clamp(32px, 5vw, 52px);
+    max-width: 780px; margin: 0 auto 18px;
+    background: linear-gradient(135deg, var(--text), #c4b5fd);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .cta p { color: var(--dim); font-size: 17px; max-width: 520px; margin: 0 auto 36px; }
+
+  /* ─── Footer ──────────────────────────────────────────────────── */
   footer {
     padding: 56px 24px 40px; background: var(--bg-deep);
     border-top: 1px solid var(--border); color: var(--muted); font-size: 13px;
   }
   .foot-grid {
     max-width: 1180px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 18px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 36px;
   }
-  .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
-  .foot-links a { color: var(--dim); transition: color .15s; }
-  .foot-links a:hover { color: var(--accent); }
+  @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  .foot-col h4 {
+    color: var(--text); font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px; margin: 0 0 14px;
+  }
+  .foot-col a {
+    display: block; color: var(--dim); padding: 5px 0;
+    transition: color .15s;
+  }
+  .foot-col a:hover { color: var(--accent); }
+  .foot-bottom {
+    max-width: 1180px; margin: 36px auto 0; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; font-size: 12px;
+  }
   .foot-brand { display: flex; align-items: center; gap: 10px; }
   .foot-brand .brand-mark { width: 24px; height: 24px; border-radius: 7px; box-shadow: none; }
   .foot-brand .brand-mark svg { width: 14px; height: 14px; }
@@ -293,16 +450,19 @@
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="/" aria-label="Filamuze">
+    <a class="brand" href="./index.ru.html" aria-label="Filamuze">
       <span class="brand-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 7l9 4 9-4-9-4z"/>
-          <path d="M3 12l9 4 9-4"/>
-          <path d="M3 17l9 4 9-4"/>
+          <path d="M3 7l9 4 9-4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/>
         </svg>
       </span>
       Filamuze
     </a>
+    <nav class="top-nav" aria-label="Разделы">
+      <a href="#features">Возможности</a>
+      <a href="#compare">Сравнение</a>
+      <a href="#pricing">Цена</a>
+    </nav>
     <nav class="lang" aria-label="Язык">
       <a href="./">EN</a>
       <a href="./index.ru.html" class="active">RU</a>
@@ -317,9 +477,9 @@
       <p class="eyebrow">Учёт филамента для 3D-печати</p>
       <h1>Сфотографируй этикетку.<br/><span class="grad">Filamuze заполнит карточку.</span></h1>
       <p class="lede left">
-        Нативное iOS и Android приложение. Привязка NFC-меток. Один платёж — без подписок.
-        Учитывай каждую катушку по весу, узнавай что заканчивается до следующей печати,
-        храни данные на своём телефоне.
+        Нативное iOS и Android — а не PWA. Привязка NFC-меток. Один платёж, без подписок.
+        Учитывай каждую катушку по весу, держи весь склад перед глазами, и пусть данные
+        живут на твоём телефоне.
       </p>
       <div class="stores">
         <a class="store-btn" aria-disabled="true" href="#">
@@ -332,84 +492,225 @@
         </a>
       </div>
       <div class="badge-row">
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Один платёж</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Работает офлайн</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Один платёж, без подписок</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Нативное iOS и Android</span>
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>EN · RU · HE</span>
       </div>
     </div>
-    <div class="device" aria-label="Главный экран Filamuze">
+    <div class="device" aria-label="Экран статистики Filamuze">
       <div class="device-screen">
-        <img src="./screenshots/07-spool-list.jpg" alt="Главный экран Filamuze — список катушек филамента с прогресс-барами" onerror="this.style.display='none'" />
-        <div class="device-fallback">
-          <div class="row" style="border-left-color:#67d4ff;"><div style="flex:1;"><div class="ttl">Sunlu PETG</div><div class="sub">Sky Blue · 1000/1000г</div></div><div class="pct">100%</div></div>
-          <div class="row" style="border-left-color:#fbbf24;"><div style="flex:1;"><div class="ttl">Sunlu PETG</div><div class="sub">Yellow · 1000/1000г</div></div><div class="pct">100%</div></div>
-          <div class="row" style="border-left-color:#fb7185;"><div style="flex:1;"><div class="ttl">Sunlu PETG</div><div class="sub">Red · 1000/1000г</div></div><div class="pct">100%</div></div>
-          <div class="row" style="border-left-color:#34d399;"><div style="flex:1;"><div class="ttl">Ataraxia Art</div><div class="sub">PETG Green · 1000/1000г</div></div><div class="pct">100%</div></div>
-          <div class="row" style="border-left-color:#a78bfa;"><div style="flex:1;"><div class="ttl">Lumizone PLA</div><div class="sub">Green · 1000/1000г</div></div><div class="pct">100%</div></div>
-        </div>
+        <img src="./screenshots/06-stats.jpg" alt="Статистика Filamuze — всего кг на полке, разбивка по материалам и по цвету" onerror="this.style.display='none'" />
       </div>
     </div>
   </div>
   <div style="height: 96px;"></div>
 </section>
 
-<section class="features">
+<section class="features" id="features">
   <div class="wrap">
     <div class="center">
-      <p class="eyebrow">Что умеет</p>
-      <h2>Сделано для тех, кто реально взвешивает катушки.</h2>
-      <p class="lede">Без социальной ленты. Без всплывающих окон с подпиской. Только то, что ты будешь открывать каждый день.</p>
+      <p class="eyebrow">Сделано для мейкеров</p>
+      <h2>Всё, что нужно для учёта филамента. Ничего лишнего.</h2>
+      <p class="lede">
+        Девять конкретных функций. Никакой ленты, никаких всплывашек подписки, никаких допродаж.
+        Только то, что открываешь каждый день.
+      </p>
     </div>
     <div class="features-grid">
 
       <article class="feature">
+        <span class="tag">Бесплатно</span>
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="4"/></svg>
         </span>
-        <h3>AI-сканер этикеток</h3>
-        <p>Наведи камеру на наклейку катушки. Бренд, материал, цвет, температуры — всё заполнится само.</p>
+        <h3>AI-сканирование этикетки</h3>
+        <p>Наведи камеру на любую наклейку — бренд, материал, цвет и рекомендованные температуры подставляются сами. Остаётся только сохранить.</p>
       </article>
 
       <article class="feature">
+        <span class="tag">Бесплатно</span>
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 21h14"/><path d="m18 9-6 6-6-6"/><path d="M6 3h12"/></svg>
         </span>
-        <h3>Брутто или нетто</h3>
-        <p>Введи показание кухонных весов как есть. Вес пустой катушки вычитается автоматически.</p>
+        <h3>Взвешивай с катушкой или без</h3>
+        <p>Вводи показание кухонных весов как есть. Вес пустой катушки вычитается автоматически — ни арифметики, ни лишних калькуляторов.</p>
       </article>
 
       <article class="feature">
+        <span class="tag">Бесплатно</span>
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/><path d="M7.76 16.24a6 6 0 0 1 0-8.49"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49"/><circle cx="12" cy="12" r="2"/></svg>
         </span>
         <h3>Привязка NFC-меток</h3>
-        <p>Наклей NFC-метку за ¢10 на катушку. Тапни её откуда угодно — Filamuze открывается на нужной катушке.</p>
+        <p>Наклей NFC-метку за пару рублей на катушку. Тапни телефоном — Filamuze откроет именно эту катушку, готовую к списанию расхода. PWA так не умеют.</p>
       </article>
 
       <article class="feature">
+        <span class="tag">Бесплатно</span>
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
         </span>
-        <h3>Напоминание "заканчивается"</h3>
-        <p>Локальное уведомление когда катушка падает ниже 100 г. Утром следующего дня в 10:00, а не посреди печати.</p>
+        <h3>Напоминания о низком остатке</h3>
+        <p>Локальное push-уведомление, когда на катушке осталось меньше 100 г. Завтра утром в 10:00 — не посреди печати и не через облако.</p>
       </article>
 
       <article class="feature">
+        <span class="tag">Бесплатно</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <h3>Трекер сушки</h3>
+        <p>Каждая катушка помнит, когда вскрыли упаковку, когда последний раз сушили и при какой температуре. Гигроскопичные материалы больше не подведут посреди печати.</p>
+      </article>
+
+      <article class="feature">
+        <span class="tag">Бесплатно</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16V8"/><path d="M11 16V5"/><path d="M15 16v-6"/><path d="M19 16v-3"/></svg>
+        </span>
+        <h3>Статистика одним взглядом</h3>
+        <p>Сколько кг на полке, разбивка по материалам и по цвету. Столбик каждого цвета носит свой реальный hex — а не одинаковую фиолетовую заливку.</p>
+      </article>
+
+      <article class="feature">
+        <span class="tag">Бесплатно</span>
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </span>
         <h3>Импорт из Spoolman</h3>
-        <p>Уже работаешь со Spoolman? Перетащи JSON-экспорт — весь каталог переедет одним тапом.</p>
+        <p>Уже сидишь на Spoolman? Закинь JSON-экспорт — весь твой каталог переезжает одним тапом. Бренды, цвета, веса и температуры подхватятся целиком.</p>
       </article>
 
       <article class="feature">
+        <span class="tag">Бесплатно</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <h3>Бэкап и восстановление</h3>
+        <p>Чистый JSON-экспорт, чистый JSON-импорт. Откроешь в любом текстовом редакторе, перенесёшь между устройствами, заархивируешь. Твои данные нигде не заперты.</p>
+      </article>
+
+      <article class="feature">
+        <span class="tag">Бесплатно</span>
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </span>
         <h3>English · Русский · עברית</h3>
-        <p>Реальные переводы, RTL-вёрстка для иврита, авто-определение языка устройства при первом запуске.</p>
+        <p>Живой человеческий перевод, RTL-вёрстка для иврита, автоопределение языка устройства при первом запуске. Никакого машинного перевода и поплывших макетов.</p>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<section class="why" id="compare">
+  <div class="wrap center">
+    <p class="eyebrow">Сравнение</p>
+    <h2>Почему Filamuze, а не браузерное приложение или таблица.</h2>
+    <p class="lede">
+      Большинство трекеров филамента — это PWA, которые крутятся в браузере. Они не дотягиваются
+      до NFC-чипа, не умеют надёжно слать уведомления оффлайн и живут на чужом сервере.
+      Filamuze сделан под телефон, который у тебя в руке.
+    </p>
+
+    <div class="why-claim">
+      <strong>Если по-честному:</strong> нужен self-hosted трекер, подключённый к Klipper —
+      ставь Spoolman. Живёшь в браузере — PWA вполне ок. Но если хочется, чтобы катушка,
+      которую ты держишь, открыла нужную страницу когда ты тапнул по ней телефоном —
+      только нативное приложение умеет это. Это Filamuze.
+    </div>
+
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Функция</th>
+            <th class="us">Filamuze</th>
+            <th>spoolio.net</th>
+            <th>Spoolman</th>
+            <th>Таблица</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Нативное iOS и Android</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Привязка NFC-меток</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Один платёж, без подписки</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Многоязычный UI (EN · RU · HE)</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="partial">Сам</span></td>
+          </tr>
+          <tr>
+            <td>AI-сканирование этикетки</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Push-уведомления оффлайн</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="partial">Только в браузере</span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Импорт Spoolman</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Трекер сушки</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td><span class="partial">Сам</span></td>
+          </tr>
+          <tr>
+            <td>JSON-экспорт (без vendor lock-in)</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Хостинг онлайн (без сервера)</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Pi или Linux</td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Данные на ТВОЁМ телефоне</td>
+            <td><span class="yes-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+            <td><span class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Их сервер</td>
+            <td><span class="partial">Твой Pi</span></td>
+            <td><span class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -418,22 +719,26 @@
   <div class="wrap">
     <div class="showcase-row">
       <div class="showcase-text">
-        <p class="eyebrow">Один взгляд, не таблица</p>
-        <h2>Каждая катушка — со своим цветом и весом.</h2>
-        <p>Главный экран фильтрует по материалу одним тапом, и итоги вверху пересчитываются под то, что реально перед тобой. Каждая катушка носит свой цвет филамента — никакой "фиолетовой униформы".</p>
+        <p class="eyebrow">Полка одним взглядом, а не Excel</p>
+        <h2>Каждая катушка — в своём цвете, со своим весом.</h2>
+        <p>Отфильтруй главный экран по материалу одним тапом — и итоги наверху пересчитаются
+          под видимое. У каждой катушки слева полоса её настоящего цвета — никакой одинаковой
+          фиолетовой раскраски, и Sky Blue PETG не спутаешь с тёмно-синим PLA.</p>
       </div>
       <div class="device">
         <div class="device-screen">
-          <img src="./screenshots/05-spool-list-grid.jpg" alt="Список катушек, grid view" onerror="this.style.display='none'" />
+          <img src="./screenshots/05-spool-list-grid.jpg" alt="Список катушек в виде сетки" onerror="this.style.display='none'" />
         </div>
       </div>
     </div>
 
     <div class="showcase-row flip">
       <div class="showcase-text">
-        <p class="eyebrow">Сушка, которая не врёт</p>
-        <h2>Запечатан, высушен, последний раз использован — на одном экране.</h2>
-        <p>Каждая катушка хранит когда вскрыли пакет, когда последний раз прогнали через драйер, и где она лежит сейчас. Гигроскопичные материалы больше не подкидывают сюрпризов.</p>
+        <p class="eyebrow">Сушка по-честному</p>
+        <h2>Запечатана, высушена, последний раз тронута — в одной карточке.</h2>
+        <p>Для каждой катушки видно, когда вскрыли упаковку, когда последний раз сушили
+          и где она сейчас. Гигроскопичный Nylon не испортит печать через три недели потому
+          что ты забыл, что он лежит открытый.</p>
       </div>
       <div class="device">
         <div class="device-screen">
@@ -445,12 +750,15 @@
     <div class="showcase-row">
       <div class="showcase-text">
         <p class="eyebrow">Тап. Открыто. Готово.</p>
-        <h2>NFC-привязка — железная фишка, которой нет ни у кого.</h2>
-        <p>Наклей метку на катушку. Тапни её каждый раз когда тянешься за бобиной. Filamuze открывается прямо на странице этой катушки, готовый записать печать. PWA-трекеры так не умеют — у них нет доступа к NFC.</p>
+        <h2>NFC-привязка — аппаратный шорткат, которого нет ни у кого.</h2>
+        <p>Наклей метку на катушку. Тапай телефоном, когда тянешься за катушкой.
+          Filamuze откроет страницу именно этой катушки, готовую списать расход. PWA так
+          не умеют — у них нет доступа к NFC API в принципе. Это реальное преимущество
+          нативного приложения.</p>
       </div>
       <div class="device">
         <div class="device-screen">
-          <img src="./screenshots/04-nfc-pair.jpg" alt="NFC pair flow" onerror="this.style.display='none'" />
+          <img src="./screenshots/04-nfc-pair.jpg" alt="Процесс привязки NFC-метки" onerror="this.style.display='none'" />
         </div>
       </div>
     </div>
@@ -461,54 +769,107 @@
   <div class="wrap">
     <div class="center">
       <p class="eyebrow">Цена</p>
-      <h2>Один раз заплатил — пользуешься.</h2>
+      <h2>Заплати один раз. Пользуйся годами.</h2>
       <p class="lede">
-        Во время Closed Test все функции бесплатны. После релиза — единоразовый платёж за power-функции.
-        Без ежемесячных счетов навсегда.
+        Три честных варианта — Filamuze, конкурент по подписке и таблица. Выбирай тот,
+        что переживёт годы 3D-печати, не опустошив кошелёк.
       </p>
     </div>
     <div class="pricing-grid">
-      <div class="price-card highlight">
-        <h3>Filamuze</h3>
-        <div class="amount">Пока бесплатно</div>
-        <div class="sub">Единоразовый платёж после релиза · ориентировочно ~$15-20</div>
-        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Все текущие функции включены</p>
-        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Нативное iOS + Android, реальная производительность</p>
-        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Привязка NFC-меток</p>
-        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Данные на твоём телефоне, синхронизация по желанию</p>
-        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Без рекламы, аналитики и допродаж</p>
-      </div>
+
       <div class="price-card">
-        <h3>Подписочные приложения у других</h3>
-        <div class="amount" style="color:var(--light-muted);">$1.99 / месяц</div>
-        <div class="sub">Бесконечно. За инструмент, которым ты будешь пользоваться годами.</div>
-        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Счета накапливаются с годами</p>
-        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Отключаешь подписку — теряешь доступ</p>
-        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Только в браузере, нет NFC, нет нативного приложения</p>
-        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Данные лежат на чужом сервере</p>
+        <span class="label">Таблица</span>
+        <div class="amount">$0<span class="small">/навсегда</span></div>
+        <div class="sub">Бесплатно, но всё строишь сам.</div>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Бесплатно</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Твои данные, твой файл</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Нет AI-сканирования</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Нет NFC</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Нет напоминаний</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Всё формулы пишешь сам</p>
       </div>
+
+      <div class="price-card highlight">
+        <span class="label">Filamuze</span>
+        <div class="amount">Бесплатно<span class="small"> на этапе Closed Test</span></div>
+        <div class="sub">Однократная разблокировка при релизе — без подписок, никогда.</div>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Все 9 функций включены</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Нативное iOS и Android</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Привязка NFC-меток</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Локальные push-уведомления</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Данные на ТВОЁМ телефоне</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>EN · RU · HE из коробки</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>JSON-экспорт, без lock-in</p>
+      </div>
+
+      <div class="price-card">
+        <span class="label">Сервис по подписке</span>
+        <div class="amount">$1.99<span class="small">/мес, навсегда</span></div>
+        <div class="sub">За инструмент, которым будешь пользоваться годами, счета набегают.</div>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>AI-сканирование этикетки</p>
+        <p class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Трекер сушки</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Только PWA в браузере</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Нет NFC</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Отмена = доступ потерян</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Данные на их сервере</p>
+        <p class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>$24 в год — навсегда</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Начни учитывать те катушки, которые у тебя реально есть.</h2>
+    <p>Closed Test будет бесплатным. Нативная сборка, которая живёт на твоём телефоне — а не в чужом облаке.</p>
+    <div class="stores" style="justify-content: center;">
+      <a class="store-btn" aria-disabled="true" href="#">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.05 2.49-4.51 2.6-4.59-1.42-2.07-3.62-2.36-4.4-2.39-1.87-.19-3.65 1.1-4.6 1.1-.95 0-2.41-1.07-3.97-1.05-2.04.03-3.93 1.19-4.99 3.01-2.13 3.7-.55 9.18 1.53 12.18 1.02 1.47 2.23 3.13 3.83 3.07 1.54-.06 2.12-1 3.99-1 1.86 0 2.4 1 4.02.97 1.66-.03 2.71-1.5 3.72-2.99.65-.94 1.45-2.32 1.93-3.74-.04-.02-3.71-1.42-3.66-5.57zM14.05 3.85c.85-1.04 1.42-2.48 1.27-3.92-1.22.05-2.71.83-3.59 1.86-.79.91-1.48 2.39-1.3 3.79 1.36.11 2.75-.69 3.62-1.73z"/></svg>
+        <span><span class="small">Скоро в</span><span class="big">App Store</span></span>
+      </a>
+      <a class="store-btn" aria-disabled="true" href="#">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333zM15.864 8.43l2.882 1.668c.726.42.726 1.464 0 1.884l-2.882 1.668L13.291 11zM5.864 1.617l10.937 6.333-2.302 2.302z"/></svg>
+        <span><span class="small">Скоро в</span><span class="big">Google Play</span></span>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="foot-grid">
+    <div class="foot-col">
+      <h4>Filamuze</h4>
+      <a href="#features">Возможности</a>
+      <a href="#compare">Сравнение</a>
+      <a href="#pricing">Цена</a>
+    </div>
+    <div class="foot-col">
+      <h4>Правовое</h4>
+      <a href="./privacy.ru.html">Политика конфиденциальности</a>
+      <a href="./terms.ru.html">Условия использования</a>
+    </div>
+    <div class="foot-col">
+      <h4>Контакты</h4>
+      <a href="mailto:support@filamuze.com">support@filamuze.com</a>
+    </div>
+    <div class="foot-col">
+      <h4>Язык</h4>
+      <a href="./">English</a>
+      <a href="./index.ru.html">Русский</a>
+      <a href="./index.he.html">עברית</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
     <div class="foot-brand">
       <span class="brand-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 7l9 4 9-4-9-4z"/>
-          <path d="M3 12l9 4 9-4"/>
-          <path d="M3 17l9 4 9-4"/>
+          <path d="M3 7l9 4 9-4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/>
         </svg>
       </span>
-      <span>Filamuze · Сделано в Qaizo Studio · <a href="mailto:support@filamuze.com">support@filamuze.com</a></span>
+      <span>Filamuze · Сделано в Qaizo Studio · 2026</span>
     </div>
-    <nav class="foot-links">
-      <a href="./privacy.ru.html">Конфиденциальность</a>
-      <a href="./terms.ru.html">Условия</a>
-      <a href="./">EN</a>
-      <a href="./index.he.html">HE</a>
-    </nav>
+    <div>Сделано для той катушки, которую ты держишь в руке.</div>
   </div>
 </footer>
 
