@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<title>Politique de confidentialité — Filamuze</title>
+<link rel="canonical" href="https://filamuze.com/privacy.fr.html" />
+<link rel="alternate" hreflang="en" href="https://filamuze.com/privacy.html" />
+<link rel="alternate" hreflang="ru" href="https://filamuze.com/privacy.ru.html" />
+<link rel="alternate" hreflang="he" href="https://filamuze.com/privacy.he.html" />
+<link rel="alternate" hreflang="de" href="https://filamuze.com/privacy.de.html" />
+<link rel="alternate" hreflang="fr" href="https://filamuze.com/privacy.fr.html" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --card: #161616;
+    --border: #262626;
+    --text: #f5f5f5;
+    --dim: #a1a1aa;
+    --muted: #737373;
+    --accent: #a78bfa;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 32px 20px 80px;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 32px; }
+  .brand { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  h1 { font-size: 32px; margin: 8px 0 6px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; color: var(--text); }
+  h3 { font-size: 16px; margin: 20px 0 6px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  p, li { color: var(--dim); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .lang-switch { font-size: 12px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+  .lang-switch a { color: var(--dim); margin: 0 6px; }
+  .lang-switch a.active { color: var(--accent); font-weight: 700; }
+  .lang-switch a:first-child { margin-left: 0; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { color: var(--text); font-weight: 600; }
+  td { color: var(--dim); }
+</style>
+</head>
+<body>
+<main>
+  <div class="lang-switch">
+    <a href="./privacy.html">EN</a> ·
+    <a href="./privacy.ru.html">RU</a> ·
+    <a href="./privacy.he.html">HE</a> ·
+    <a href="./privacy.de.html">DE</a> ·
+    <a href="./privacy.fr.html" class="active">FR</a>
+  </div>
+  <header>
+    <div class="brand">Filamuze</div>
+    <h1>Politique de confidentialité</h1>
+    <p class="meta">Mise à jour : 9 mai 2026</p>
+  </header>
+
+  <p>
+    Filamuze est une application de gestion de bobines de filament pour imprimantes 3D,
+    développée et maintenue par Qaizo Studio (« nous », « notre », « nos »). Ce document
+    décrit les données que nous collectons, la façon dont nous les utilisons et comment
+    tu peux les supprimer.
+  </p>
+
+  <h2>En bref</h2>
+  <ul>
+    <li>Nous collectons le minimum nécessaire au fonctionnement de l'application : ton adresse e-mail pour la connexion et les bobines que tu ajoutes toi-même.</li>
+    <li>Tes données sont stockées dans Google Firebase (Firestore + Cloud Storage) et accessibles uniquement à ton compte.</li>
+    <li>Nous ne vendons, ne louons ni ne partageons tes données avec des réseaux publicitaires.</li>
+    <li>Tu peux supprimer ton compte et toutes tes données directement depuis l'application.</li>
+  </ul>
+
+  <h2>Ce que nous collectons</h2>
+  <table>
+    <thead><tr><th>Données</th><th>Pourquoi</th><th>Où</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Adresse e-mail</td>
+        <td>Identifier ton compte afin que les bobines se synchronisent entre tes appareils.</td>
+        <td>Firebase Authentication</td>
+      </tr>
+      <tr>
+        <td>Nom (uniquement lors d'une connexion via Google / Apple)</td>
+        <td>Message de bienvenue personnalisé sur l'écran principal.</td>
+        <td>Firebase Authentication</td>
+      </tr>
+      <tr>
+        <td>Données de bobine : marque, matériau, poids, températures, couleur, photo, notes</td>
+        <td>Gestion du filament — la fonctionnalité principale de l'application.</td>
+        <td>Firestore (collection séparée par utilisateur)</td>
+      </tr>
+      <tr>
+        <td>Photos de bobines</td>
+        <td>Identification visuelle de la bobine. Tu décides toi-même de prendre ou télécharger une photo.</td>
+        <td>Firebase Cloud Storage (espace séparé par utilisateur)</td>
+      </tr>
+      <tr>
+        <td>Langue, paramètres d'affichage</td>
+        <td>Mémoriser tes préférences entre les sessions.</td>
+        <td>Stockage local de l'appareil (AsyncStorage)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Ce que nous ne collectons <em>pas</em></h2>
+  <ul>
+    <li>Géolocalisation.</li>
+    <li>Contacts du carnet d'adresses.</li>
+    <li>Identifiants publicitaires.</li>
+    <li>SDK d'analyse tiers (pas de Google Analytics, Facebook SDK, etc.).</li>
+    <li>Aucun suivi en arrière-plan — l'application ne fonctionne que lorsque tu l'ouvres.</li>
+  </ul>
+
+  <h2>Comment nous utilisons les données</h2>
+  <p>Uniquement pour les fonctionnalités de l'application :</p>
+  <ul>
+    <li>Authentification, pour que les données se synchronisent uniquement avec ton compte.</li>
+    <li>Stockage et récupération des bobines que tu saisis.</li>
+    <li>Affichage des photos associées aux bobines.</li>
+    <li>Envoi d'e-mails de réinitialisation de mot de passe sur demande.</li>
+  </ul>
+
+  <h2>Photos et appareil photo</h2>
+  <p>
+    L'application utilise l'appareil photo et la galerie de l'appareil uniquement lorsque
+    tu appuies sur le bouton pour ajouter une photo de bobine ou scanner une étiquette.
+    Les photos que tu prends ne quittent pas l'appareil tant que tu n'as pas enregistré
+    la bobine — ensuite, la photo est téléchargée dans ton espace privé Firebase Storage,
+    accessible uniquement par toi. La reconnaissance d'étiquette utilise l'OCR intégré
+    (Google ML Kit) et n'envoie la photo de l'étiquette nulle part — elle est supprimée
+    après avoir rempli le formulaire.
+  </p>
+
+  <h2>Tiers</h2>
+  <p>
+    Filamuze s'appuie sur Google Firebase (Authentication, Firestore, Cloud Storage),
+    Google Sign-In, Apple Sign-In et Sentry (rapports de crash). Ces sous-traitants
+    traitent tes données en notre nom :
+  </p>
+  <ul>
+    <li>
+      Google Firebase —
+      <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">politique de confidentialité</a>
+    </li>
+    <li>
+      Google Sign-In —
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité</a>
+    </li>
+    <li>
+      Apple Sign-In —
+      <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">politique de confidentialité</a>
+    </li>
+    <li>
+      Sentry — uniquement les rapports de crash. Quand Filamuze plante, nous envoyons à
+      Sentry la trace d'appels, la version de l'application, le modèle de l'appareil, la
+      version de l'OS et la séquence d'actions ayant précédé le crash. Nous n'envoyons pas
+      les données de tes bobines, tes photos ni ton adresse e-mail.
+      <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">politique de confidentialité</a>
+    </li>
+  </ul>
+  <p>Nous ne communiquons tes données à personne d'autre.</p>
+
+  <h2>Durée de conservation</h2>
+  <p>
+    Tes données sont conservées tant que ton compte existe. Lorsque tu supprimes ton compte
+    depuis l'application (Paramètres → Compte → Supprimer le compte), nous supprimons
+    toutes tes bobines, l'historique d'utilisation, les photos et l'enregistrement
+    d'authentification. Cette action est irréversible.
+  </p>
+
+  <h2>Tes droits</h2>
+  <ul>
+    <li><strong>Accès</strong> — toutes tes données sont visibles directement dans l'application.</li>
+    <li><strong>Rectification</strong> — modifie une bobine depuis son écran de détail.</li>
+    <li><strong>Suppression</strong> — Paramètres → Compte → Supprimer le compte efface tout ce que nous conservons sur toi.</li>
+    <li><strong>Portabilité</strong> — écris-nous à <a href="mailto:support@filamuze.com">support@filamuze.com</a> si tu as besoin d'un export.</li>
+  </ul>
+
+  <h2>Enfants</h2>
+  <p>
+    Filamuze est destiné aux utilisateurs de 13 ans et plus. Nous ne collectons pas
+    sciemment de données d'enfants de moins de 13 ans. Si tu penses qu'un enfant a créé
+    un compte, écris-nous à
+    <a href="mailto:support@filamuze.com">support@filamuze.com</a> et nous le supprimerons.
+  </p>
+
+  <h2>Sécurité</h2>
+  <p>
+    Les données sont transmises via HTTPS / TLS. Les règles de sécurité Firestore
+    garantissent que seul ton compte authentifié peut lire et modifier tes données. Nous
+    n'avons pas accès direct à ton mot de passe — Firebase Authentication le stocke sous
+    forme de hash salé.
+  </p>
+
+  <h2>Modifications de la politique</h2>
+  <p>
+    Si nous mettons à jour cette politique en ce qui concerne les données collectées ou leur
+    utilisation, nous modifierons la date « Mise à jour » en haut. Les changements importants
+    seront annoncés dans l'application au prochain démarrage.
+  </p>
+
+  <h2>Nous contacter</h2>
+  <p>
+    Questions sur cette politique ou sur tes données :
+    <a href="mailto:support@filamuze.com">support@filamuze.com</a>
+  </p>
+
+  <footer>
+    Filamuze · Fait par Qaizo Studio · <a href="./terms.fr.html">Conditions d'utilisation</a>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<title>Datenschutzrichtlinie — Filamuze</title>
+<link rel="canonical" href="https://filamuze.com/privacy.de.html" />
+<link rel="alternate" hreflang="en" href="https://filamuze.com/privacy.html" />
+<link rel="alternate" hreflang="ru" href="https://filamuze.com/privacy.ru.html" />
+<link rel="alternate" hreflang="he" href="https://filamuze.com/privacy.he.html" />
+<link rel="alternate" hreflang="de" href="https://filamuze.com/privacy.de.html" />
+<link rel="alternate" hreflang="fr" href="https://filamuze.com/privacy.fr.html" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --card: #161616;
+    --border: #262626;
+    --text: #f5f5f5;
+    --dim: #a1a1aa;
+    --muted: #737373;
+    --accent: #a78bfa;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 32px 20px 80px;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 32px; }
+  .brand { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  h1 { font-size: 32px; margin: 8px 0 6px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; color: var(--text); }
+  h3 { font-size: 16px; margin: 20px 0 6px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  p, li { color: var(--dim); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .lang-switch { font-size: 12px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.5px; }
+  .lang-switch a { color: var(--dim); margin: 0 6px; }
+  .lang-switch a.active { color: var(--accent); font-weight: 700; }
+  .lang-switch a:first-child { margin-left: 0; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { color: var(--text); font-weight: 600; }
+  td { color: var(--dim); }
+</style>
+</head>
+<body>
+<main>
+  <div class="lang-switch">
+    <a href="./privacy.html">EN</a> ·
+    <a href="./privacy.ru.html">RU</a> ·
+    <a href="./privacy.he.html">HE</a> ·
+    <a href="./privacy.de.html" class="active">DE</a> ·
+    <a href="./privacy.fr.html">FR</a>
+  </div>
+  <header>
+    <div class="brand">Filamuze</div>
+    <h1>Datenschutzrichtlinie</h1>
+    <p class="meta">Aktualisiert: 9. Mai 2026</p>
+  </header>
+
+  <p>
+    Filamuze ist eine App zur Verwaltung von 3D-Drucker-Filamentspulen, entwickelt und
+    betrieben von Qaizo Studio («wir», «uns», «unser»). Dieses Dokument beschreibt, welche
+    Daten wir erheben, wie wir sie verwenden und wie du sie löschen kannst.
+  </p>
+
+  <h2>Kurz zusammengefasst</h2>
+  <ul>
+    <li>Wir erheben das Minimum, das für den Betrieb der App nötig ist: deine E-Mail-Adresse für die Anmeldung und die Spulen, die du selbst hinzufügst.</li>
+    <li>Deine Daten werden in Google Firebase (Firestore + Cloud Storage) gespeichert und sind nur für dein Konto zugänglich.</li>
+    <li>Wir verkaufen, vermieten oder geben deine Daten nicht an Werbenetzwerke weiter.</li>
+    <li>Du kannst dein Konto mit allen Daten direkt in der App löschen.</li>
+  </ul>
+
+  <h2>Was wir erheben</h2>
+  <table>
+    <thead><tr><th>Daten</th><th>Zweck</th><th>Speicherort</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>E-Mail-Adresse</td>
+        <td>Dein Konto identifizieren, damit Spulen geräteübergreifend synchronisiert werden.</td>
+        <td>Firebase Authentication</td>
+      </tr>
+      <tr>
+        <td>Name (nur bei Anmeldung über Google / Apple)</td>
+        <td>Personalisierte Begrüßung auf dem Hauptbildschirm.</td>
+        <td>Firebase Authentication</td>
+      </tr>
+      <tr>
+        <td>Spulendaten: Marke, Material, Gewicht, Temperaturen, Farbe, Foto, Notizen</td>
+        <td>Filamentverwaltung — die Kernfunktion der App.</td>
+        <td>Firestore (separate Sammlung pro Nutzer)</td>
+      </tr>
+      <tr>
+        <td>Fotos der Spulen</td>
+        <td>Visuelle Identifikation der Spule. Du entscheidest selbst, ob du ein Foto aufnimmst oder hochlädst.</td>
+        <td>Firebase Cloud Storage (separat für jeden Nutzer)</td>
+      </tr>
+      <tr>
+        <td>Sprache, Anzeigeeinstellungen</td>
+        <td>Deine Einstellungen zwischen den Sitzungen speichern.</td>
+        <td>Lokaler Gerätespeicher (AsyncStorage)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Was wir <em>nicht</em> erheben</h2>
+  <ul>
+    <li>Standortdaten.</li>
+    <li>Kontakte aus dem Adressbuch.</li>
+    <li>Werbe-IDs.</li>
+    <li>Drittanbieter-Analyse-SDKs (kein Google Analytics, Facebook SDK o. Ä.).</li>
+    <li>Kein Hintergrund-Tracking — die App läuft nur, wenn du sie öffnest.</li>
+  </ul>
+
+  <h2>Wie wir die Daten verwenden</h2>
+  <p>Ausschließlich für die App-Funktionen:</p>
+  <ul>
+    <li>Authentifizierung, damit Daten nur mit deinem Konto synchronisiert werden.</li>
+    <li>Speichern und Abrufen der Spulen, die du eingibst.</li>
+    <li>Anzeigen der Fotos, die du Spulen zugeordnet hast.</li>
+    <li>Versenden von E-Mails zum Zurücksetzen des Passworts auf Anfrage.</li>
+  </ul>
+
+  <h2>Fotos und Kamera</h2>
+  <p>
+    Die App nutzt Kamera und Galerie des Geräts nur, wenn du auf die Schaltfläche zum
+    Hinzufügen eines Spulenfotos oder zum Scannen eines Etiketts tippst. Fotos, die du
+    aufnimmst, verlassen das Gerät nicht, bis du die Spule speicherst — danach wird das
+    Foto in deinen privaten Firebase Storage-Bereich hochgeladen, der nur dir zugänglich
+    ist. Die Etikettenerkennung nutzt integrierte OCR (Google ML Kit) und sendet das
+    Etikettenfoto nirgendwo hin — es wird nach dem Ausfüllen des Formulars verworfen.
+  </p>
+
+  <h2>Drittanbieter</h2>
+  <p>
+    Filamuze setzt auf Google Firebase (Authentication, Firestore, Cloud Storage),
+    Google Sign-In, Apple Sign-In und Sentry (Crash-Berichte). Diese Auftragsverarbeiter
+    verarbeiten deine Daten in unserem Auftrag:
+  </p>
+  <ul>
+    <li>
+      Google Firebase —
+      <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Datenschutzrichtlinie</a>
+    </li>
+    <li>
+      Google Sign-In —
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzrichtlinie</a>
+    </li>
+    <li>
+      Apple Sign-In —
+      <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Datenschutzrichtlinie</a>
+    </li>
+    <li>
+      Sentry — ausschließlich Crash-Berichte. Wenn Filamuze abstürzt, senden wir an
+      Sentry den Stack-Trace, die App-Version, das Gerätemodell, die OS-Version und
+      die Aktionsfolge vor dem Absturz. Wir senden keine Spulendaten, Fotos oder
+      E-Mail-Adressen.
+      <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">Datenschutzrichtlinie</a>
+    </li>
+  </ul>
+  <p>Deine Daten geben wir an niemanden sonst weiter.</p>
+
+  <h2>Wie lange wir speichern</h2>
+  <p>
+    Deine Daten werden gespeichert, solange dein Konto besteht. Wenn du dein Konto in der
+    App löschst (Einstellungen → Konto → Konto löschen), löschen wir alle deine Spulen,
+    die Nutzungshistorie, Fotos und den Authentifizierungseintrag. Das ist unwiderruflich.
+  </p>
+
+  <h2>Deine Rechte</h2>
+  <ul>
+    <li><strong>Auskunft</strong> — alle deine Daten sind direkt in der App sichtbar.</li>
+    <li><strong>Berichtigung</strong> — bearbeite eine Spule auf ihrem Detailbildschirm.</li>
+    <li><strong>Löschung</strong> — Einstellungen → Konto → Konto löschen entfernt alles, was wir über dich gespeichert haben.</li>
+    <li><strong>Datenübertragung</strong> — schreib uns an <a href="mailto:support@filamuze.com">support@filamuze.com</a>, wenn du einen Export benötigst.</li>
+  </ul>
+
+  <h2>Kinder</h2>
+  <p>
+    Filamuze richtet sich an Nutzer ab 13 Jahren. Wir erheben wissentlich keine Daten von
+    Kindern unter 13 Jahren. Wenn du glaubst, dass ein Kind ein Konto erstellt hat, schreib
+    uns an <a href="mailto:support@filamuze.com">support@filamuze.com</a>, und wir löschen es.
+  </p>
+
+  <h2>Sicherheit</h2>
+  <p>
+    Daten werden über HTTPS / TLS übertragen. Die Sicherheitsregeln von Firestore stellen
+    sicher, dass nur dein authentifiziertes Konto deine Daten lesen und ändern kann. Wir
+    haben keinen direkten Zugang zu deinem Passwort — Firebase Authentication speichert es
+    als gesalteten Hash.
+  </p>
+
+  <h2>Änderungen der Richtlinie</h2>
+  <p>
+    Wenn wir diese Richtlinie hinsichtlich der erhobenen Daten oder deren Verwendung
+    aktualisieren, ändern wir das Datum «Aktualisiert» oben. Wesentliche Änderungen werden
+    beim nächsten Start in der App angekündigt.
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Fragen zu dieser Richtlinie oder deinen Daten:
+    <a href="mailto:support@filamuze.com">support@filamuze.com</a>
+  </p>
+
+  <footer>
+    Filamuze · Gemacht von Qaizo Studio · <a href="./terms.de.html">Nutzungsbedingungen</a>
+  </footer>
+</main>
+</body>
+</html>
