@@ -446,6 +446,24 @@
   .foot-brand { display: flex; align-items: center; gap: 10px; }
   .foot-brand .brand-mark { width: 24px; height: 24px; border-radius: 7px; box-shadow: none; }
   .foot-brand .brand-mark svg { width: 14px; height: 14px; }
+  .lang-switch {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    padding: 7px 28px 7px 10px;
+    margin-bottom: 18px;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  .lang-switch:focus { outline: 1px solid var(--accent); }
+  .lang-switch option { background: var(--bg2); color: var(--text); }
 </style>
 </head>
 <body>
@@ -465,13 +483,13 @@
       <a href="#compare">Vergleich</a>
       <a href="#pricing">Preise</a>
     </nav>
-    <nav class="lang" aria-label="Sprache">
-      <a href="./">EN</a>
-      <a href="./index.ru.html">RU</a>
-      <a href="./index.he.html">HE</a>
-      <a href="./index.de.html" class="active">DE</a>
-      <a href="./index.fr.html">FR</a>
-    </nav>
+    <select class="lang-switch" onchange="if(this.value)location.href=this.value" aria-label="Language">
+    <option value="./index.html">English</option>
+    <option value="./index.ru.html">Русский</option>
+    <option value="./index.he.html">עברית</option>
+    <option value="./index.de.html" selected>Deutsch</option>
+    <option value="./index.fr.html">Français</option>
+  </select>
   </div>
 </header>
 
